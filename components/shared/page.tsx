@@ -3,9 +3,10 @@ import { navLinks } from '@/constants'
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { SignedIn } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { PathnameContext } from 'next/dist/shared/lib/hooks-client-context.shared-runtime'
 import { usePathname } from 'next/navigation'
+import { Button } from '../ui/button'
 
 
 
@@ -18,6 +19,8 @@ const Sidebar = () => {
             <Image src="/assets/images/logo-text.svg" alt="logo" width={180} height={28} />
             </Link>
             <nav className="sidebar-nav">
+
+            {/* The below code displays this content when the user is signed in */}
             <SignedIn>
                 <ul className='sidebar-nav_elements'>
                     {navLinks.map((link) =>{
@@ -39,10 +42,19 @@ const Sidebar = () => {
                             </li>
                             )
                     }) }
-                </ul>
 
+                    <li className='flex-center cursor-pointer gap-2 p-4'>
+                        <UserButton  showName/>
+                    </li>
+                </ul>
             </SignedIn>
 
+            {/* The below code shows the user button to sign out */}
+            <SignedOut>
+                    <Button asChild className='button bg-violet-gradient bg-cover'>
+                        <Link href="/sign-in">Login</Link>
+                    </Button>
+            </SignedOut>
 
             </nav>
         </div>
