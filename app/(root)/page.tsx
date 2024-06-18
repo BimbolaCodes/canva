@@ -3,10 +3,12 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <div>
-      <p>Home</p>
-      <UserButton />
-    </div>
+    <>
+      <div className='flex justify-between'>
+        <p>Home</p>
+        <UserButton />
+      </div>
+    </>
 
     
   )
