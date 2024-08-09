@@ -3,7 +3,7 @@ import { Document, Schema, model, models } from "mongoose";
 
 
 
-export interface IImage extends Document {
+export interface Image extends Document{
     title: string;
     transformationType: string;
     publicId: URL;
@@ -23,9 +23,6 @@ export interface IImage extends Document {
     createdAt?: Date;
     updatedAt?: Date;
 }
-
-
-
 
 
 const ImageSchema = new Schema({
